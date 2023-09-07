@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-# name: discourse-plugin-name
-# about: TODO
+# name: porter_bands
+# about: This is a plugin that restricts routes of bands access a forum
+#  coming form specific domains
 # version: 0.0.1
-# authors: Discourse
-# url: TODO
+# authors: Acacia Bengo Ssembajjwe
+# url:git@github.com:heartsupport/porter_bands.git
 # required_version: 2.7.0
-
-enabled_site_setting :plugin_name_enabled
-
-module ::MyPluginModule
-  PLUGIN_NAME = "discourse-plugin-name"
-end
-
-require_relative "lib/my_plugin_module/engine"
 
 after_initialize do
   # Code which should run after Rails has finished booting
+  Discourse::Application.routes.append do
+    # iterate through all the bands and create a route for each
+
+    # restrict the root route to the bands category
+    root to: "/category/122", constraints: { subdomain: "augustburnsred" }
+    match "/abr", to: "category/122", via: :all
+  end
 end
