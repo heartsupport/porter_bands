@@ -20,6 +20,6 @@ after_initialize do
       get "/abr", to: redirect("/c/122")
     end
 
-    match "/abr/*path", to: redirect("/c/122/%{path}"), via: :all
+    match "/abr", to: redirect("/c/122), via: :all
   end
 end
