@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # name: porter_bands
-# about: This is a plugin that restricts routes of bands access a forum
+# about: This is a plugin that restricts routes accessed by a band on a forum
 #  coming form specific domains
 # version: 0.0.1
 # authors: Acacia Bengo Ssembajjwe
@@ -19,5 +19,7 @@ after_initialize do
       root to: redirect("/c/122")
       get "/abr", to: redirect("/c/122")
     end
+
+    match "/abr/*path", to: redirect("/c/122/%{path}"), via: :all
   end
 end
