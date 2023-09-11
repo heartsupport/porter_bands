@@ -14,7 +14,10 @@ after_initialize do
     # iterate through all the bands and create a route for each
 
     # restrict the root route to the bands category
-    root to: redirect_to("https://forum.heartsupport.com/c/122"), constraints: { subdomain: "augustburnsred" }
-    match "/abr", to: redirect_to("https://forum.heartsupport.com/c/122"), via: :all
+    constraints subdomain: "augustburnsred" do
+      # route all root requests to the bands category
+      root to: redirect("/c/122")
+      get "/abr", to: redirect("/c/122")
+    end
   end
 end
