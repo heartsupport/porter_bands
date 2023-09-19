@@ -3,10 +3,10 @@
 # name: porter-bands
 # about: This is a plugin that restricts routes accessed by a band on a forum
 #  coming form specific domains
-# version: 0.0.1
+# version: 1.0.2
 # authors: Acacia Bengo Ssembajjwe
 # url:git@github.com:heartsupport/porter_bands.git
-# required_version: 2.7.0
+# required_version: 3.2.2
 
 after_initialize do
   # add dependencies
