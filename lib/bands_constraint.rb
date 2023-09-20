@@ -1,7 +1,7 @@
 class BandsConstraint
-  ACCEPTED_BANDS = ["augustburnsred"].freeze
+  ACCEPTED_BANDS = ["AugustBurnsRed"].freeze
   BANDS = {
-    "abr" => "augustburnsred",
+    "abr" => "AugustBurnsRed",
   }.freeze
 
   def initialize(band_name)
