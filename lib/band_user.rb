@@ -2,7 +2,7 @@ module BandUser
   BANDS = {
     "abr" => {
       "name" => "augustburnsred",
-      "category_id" => "5",
+      "category_id" => "124",
     },
   }.freeze
 
