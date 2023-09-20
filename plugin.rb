@@ -6,7 +6,7 @@
 # version: 1.0.2
 # authors: Acacia Bengo Ssembajjwe
 # url:git@github.com:heartsupport/porter_bands.git
-# required_version: 3.2.2
+# required_version: 2.7.2
 
 after_initialize do
   # add dependencies
