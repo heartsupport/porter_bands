@@ -1,9 +1,4 @@
 class BandsConstraint
-  ACCEPTED_BANDS = ["AugustBurnsRed"].freeze
-  BANDS = {
-    "abr" => "AugustBurnsRed",
-  }.freeze
-
   def initialize(band_name)
     @band_name = band_name
   end

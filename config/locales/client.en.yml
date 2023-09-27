@@ -1,0 +1,12 @@
+en:
+  site_settings:
+    porter_bands_enabled: "Enable Porter Bands"
+
+  js:
+    porter_bands:
+      label: "Porter Bands"
+
+  admin_js:
+    porter_bands:
+      title: "HeartSupport Bands"
+      show: "Show Bands"

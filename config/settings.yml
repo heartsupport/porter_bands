@@ -1,0 +1,7 @@
+plugins:
+  porter_bands_enabled:
+    default: false
+    client: true
+  bands:
+    default: ''
+    client: ''

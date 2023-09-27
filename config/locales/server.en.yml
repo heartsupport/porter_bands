@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    porter_bands_enabled: "Enable Porter Bands"
+    porter_bands_title: "Bands"
+    porter_bands_show: "Show Bands"

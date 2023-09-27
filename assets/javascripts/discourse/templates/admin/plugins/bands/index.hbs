@@ -1,0 +1,13 @@
+<div class="bands">
+  <p>{{#link-to 'adminPlugins.bands.new'}} Create New Band {{/link-to}} </p>
+  <h1>List of Bands</h1>
+  <ul>
+    {{#each model as |band|}}
+      <li>Band Name: {{band.name}}</li>
+      <li>Path: {{band.path}}</li>
+      <li>Category ID: {{band.category_id}}</li>
+      <li>Group ID: {{band.group_id}}</li>
+      <li>{{#link-to 'adminPlugins.bands.destroy' band.id}} Delete {{/link-to}}</li>
+    {{/each}}
+  </ul>
+</div>
