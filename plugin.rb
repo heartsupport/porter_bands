@@ -12,14 +12,18 @@ enabled_site_setting :porter_bands_enabled
 
 add_admin_route "porter_bands.title", "bands"
 
+register_asset "stylesheets/bands.scss"
+
 after_initialize do
   load File.expand_path("../app/controllers/bands_controller.rb", __FILE__)
+
   # add dependencies
   require_relative "lib/bands_constraint"
   require_relative "lib/band_user"
   require_relative "app/models/band"
   require_relative "config/initializers/patch_users_controller"
   require_relative "app/controllers/bands_controller"
+  # require_relative "lib/porter_bands/engine"
 
   Discourse::Application.routes.append do
     get "/admin/plugins/bands" => "bands#index"

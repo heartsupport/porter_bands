@@ -3,13 +3,11 @@ import DiscourseRoute from "discourse/routes/discourse";
 import EmberObject from "@ember/object";
 
 export default DiscourseRoute.extend({
+  model() {
+    return {}
+  },
   renderTemplate() {
     this.render('admin.plugins.bands.new');
   },
-  model() {
-    return ajax("/admin/plugins/bands.json").then((data) => {
-      console.log(data);
-      return data.bands.map((band) => EmberObject.create(band));
-    });
-  }
+  controllerName: 'admin-plugins-bands-new',
 });

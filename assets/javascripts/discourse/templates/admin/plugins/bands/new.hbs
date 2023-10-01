@@ -1,6 +1,34 @@
-<div class="bands">
-  <p>This is a new band</p>
-  <p>{{#link-to 'adminPlugins.bands.new'}} Create New Band {{/link-to}} </p>
-  <h1>List of Bands</h1>
+<!-- templates/bands/new.hbs -->
+<div class="row">
 
+<section class="bands">
+  <div class="form-container">
+    <div class="form-title">
+      <h4>Register New Band</h4>
+    </div>
+    <form {{action "saveBand" on="submit" }} class="form-horizontal band-form">
+      <div class="form-group">
+        <label for="bandName">Band Name:</label>
+        {{input type="text" id="bandName" value=bandName class="ember-text-field ember-view"}}
+      </div>
+      <div class="form-group">
+        <label for="groupId">Group ID:</label>
+        {{input type="text" id="groupId" value=groupId class="ember-text-field ember-view"}}
+      </div>
+      <div class="form-group">
+        <label for="categoryId">Category ID:</label>
+        {{input type="text" id="categoryId" value=categoryId class="ember-text-field ember-view"}}
+      </div>
+      <div class="form-group">
+        <label for="path">Path:</label>
+        {{input type="text" id="path" value=path class="ember-text-field ember-view"}}
+      </div>
+      <div class="form-control">
+        <button type="submit" class="btn btn-icon-text btn-default">Save Band</button>
+      </div>
+    </form>
+  </div>
+</section>
 </div>
+
+

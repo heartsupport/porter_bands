@@ -3,14 +3,20 @@ import DiscourseRoute from "discourse/routes/discourse";
 import EmberObject from "@ember/object";
 
 export default DiscourseRoute.extend({
+  model() {
+    return ajax("/admin/plugins/bands.json").then((data) => {
+      return data.bands.map((band) => EmberObject.create(band));
+    });
+  },
   renderTemplate() {
     this.render('admin.plugins.bands.index');
   },
-
-  model() {
-    return ajax("/admin/plugins/bands.json").then((data) => {
-      console.log(data);
-      return data.bands.map((band) => EmberObject.create(band));
-    });
+  controllerName: 'admin-plugins-bands-index',
+  actions: {
+    refreshRoute() {
+      this.refresh();
+    }
   }
+
+
 });
