@@ -14,25 +14,27 @@ add_admin_route "porter_bands.title", "bands"
 
 register_asset "stylesheets/bands.scss"
 
-after_initialize do
-  load File.expand_path("../app/controllers/bands_controller.rb", __FILE__)
+# add dependencies
+require_relative "lib/bands_constraint"
+require_relative "lib/band_user"
+require_relative "app/models/band"
+require_relative "app/controllers/bands_controller"
 
-  # add dependencies
-  require_relative "lib/bands_constraint"
-  require_relative "lib/band_user"
-  require_relative "app/models/band"
-  require_relative "config/initializers/patch_users_controller"
-  require_relative "app/controllers/bands_controller"
-  # require_relative "lib/porter_bands/engine"
+Discourse::Application.routes.append do
+  get "/admin/plugins/bands" => "admin/plugins#index"
+  get "/admin/plugins/bands/*all" => "admin/plugins#index"
 
-  Discourse::Application.routes.append do
-    get "/admin/plugins/bands" => "bands#index"
-    get "/admin/plugins/bands/new" => "bands#new"
-    post "/admin/plugins/bands" => "bands#create"
-    delete "/admin/plugins/bands/:id" => "bands#destroy"
+  # band routes
+  get "admin/plugins/porter/bands" => "bands#index"
+  get "admin/plugins/porter/bands/new" => "bands#new"
+  post "admin/plugins/porter/bands/" => "bands#create"
+  delete "admin/plugins/porter/bands/:id" => "bands#destroy"
 
-    Band.all.each do |band|
-      match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
-    end
+  Band.all.each do |band|
+    match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
   end
+end
+
+after_initialize do
+  require_relative "config/initializers/patch_users_controller"
 end

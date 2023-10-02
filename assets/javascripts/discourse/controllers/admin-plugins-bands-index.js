@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     deleteBand(band) {
       // make ajax call and route to index
       // make ajax post request
-      ajax(`/admin/plugins/bands/${band.id}`, {
+      ajax(`/admin/plugins/porter/bands/${band.id}`, {
         type: 'DELETE',
         contentType: 'application/json',
         headers: {

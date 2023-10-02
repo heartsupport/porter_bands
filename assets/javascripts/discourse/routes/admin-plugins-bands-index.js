@@ -4,7 +4,7 @@ import EmberObject from "@ember/object";
 
 export default DiscourseRoute.extend({
   model() {
-    return ajax("/admin/plugins/bands.json").then((data) => {
+    return ajax("/admin/plugins/porter/bands.json").then((data) => {
       return data.bands.map((band) => EmberObject.create(band));
     });
   },

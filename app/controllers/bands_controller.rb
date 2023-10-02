@@ -1,10 +1,9 @@
 class BandsController < ActionController::Base
+  include Rails.application.routes.url_helpers
+
   def index
     @bands = Band.order("created_at DESC")
-    respond_to do |format|
-      format.html { render "/admin/plugins" }
-      format.json { render json: @bands, status: :ok }
-    end
+    render json: @bands, status: :ok
   end
 
   def new

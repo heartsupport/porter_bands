@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
       console.log(data);
 
       // make ajax post request
-      ajax('/admin/plugins/bands', {
+      ajax('/admin/plugins/porter/bands/', {
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
