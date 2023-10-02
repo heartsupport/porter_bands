@@ -31,8 +31,8 @@ after_initialize do
     post "/admin/plugins/bands" => "bands#create"
     delete "/admin/plugins/bands/:id" => "bands#destroy"
 
-    # Band.all.each do |band|
-    #   match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
-    # end
+    Band.all.each do |band|
+      match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
+    end
   end
 end
