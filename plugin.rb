@@ -20,21 +20,23 @@ require_relative "lib/band_user"
 require_relative "app/models/band"
 require_relative "app/controllers/bands_controller"
 
-Discourse::Application.routes.append do
-  get "/admin/plugins/bands" => "admin/plugins#index"
-  get "/admin/plugins/bands/*all" => "admin/plugins#index"
-
-  # band routes
-  get "admin/plugins/porter/bands" => "bands#index"
-  get "admin/plugins/porter/bands/new" => "bands#new"
-  post "admin/plugins/porter/bands/" => "bands#create"
-  delete "admin/plugins/porter/bands/:id" => "bands#destroy"
-
-  Band.all.each do |band|
-    match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
-  end
-end
-
 after_initialize do
   require_relative "config/initializers/patch_users_controller"
+
+  Discourse::Application.routes.append do
+    get "/admin/plugins/bands" => "admin/plugins#index"
+    get "/admin/plugins/bands/*all" => "admin/plugins#index"
+
+    # band routes
+    get "admin/plugins/porter/bands" => "bands#index"
+    get "admin/plugins/porter/bands/new" => "bands#new"
+    post "admin/plugins/porter/bands/" => "bands#create"
+    delete "admin/plugins/porter/bands/:id" => "bands#destroy"
+
+    # Band.all.each do |band|
+    #   match "/#{band.path}", to: "bands#show", via: :all, constraints: BandsConstraint.new(band.name)
+    # end
+
+    match "/bands/:path", to: "bands#show", via: :get
+  end
 end

@@ -28,15 +28,13 @@ class BandsController < ActionController::Base
   end
 
   def show
-    path = request.url.split("/").last
+    path = params["path"]
 
     band = Band.find_by(path: path)
 
     if band.present?
       # add band name to session
-      # band = BandUser::BANDS[band_name]
-
-      session[:band] = { name: band.name } unless session[:band].present?
+      session[:band] = { id: band.id, name: band.name } unless session[:band].present?
 
       # check if user is logged in
       current_user = CurrentUser.lookup_from_env(request.env)
